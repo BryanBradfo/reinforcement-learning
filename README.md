@@ -1,4 +1,4 @@
-# Reinforcement Learning: Load Balancing, MDPs, and Multi-Armed Bandits
+# Reinforcement Learning (RL): Load Balancing, MDPs, and Multi-Armed Bandits
 
 This repository contains implementations and explorations of various Reinforcement Learning (RL) concepts, focusing on a load balancing problem modeled as a Markov Decision Process (MDP), along with supplementary exercises on dynamic programming and multi-armed bandits.
 

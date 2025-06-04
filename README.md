@@ -14,10 +14,9 @@ This repository contains implementations and explorations of various Reinforceme
         *   [2.1. Policy Evaluation (TD(0))](#21-policy-evaluation-td0)
         *   [2.2. Optimal Control (Q-Learning)](#22-optimal-control-q-learning)
 3.  [Supplementary Exercises](#supplementary-exercises)
-    *   [tp1: Dynamic Programming and Value Iteration](#tp1-dynamic-programming-and-value-iteration)
+    *   [practical_session: Dynamic Programming and Value Iteration](#practical_session-dynamic-programming-and-value-iteration)
         *   [tp1.py: Airline Ticket Pricing](#tp1py-airline-ticket-pricing)
         *   [tp2.py, tp2\_policy.py, tp2\_test.py: Simple 2-State MDP](#tp2py-tp2_policypy-tp2_testpy-simple-2-state-mdp)
-    *   [tp2: Multi-Armed Bandits (TP2\_bandits\_2023(1).ipynb)](#tp2-multi-armed-bandits-tp2_bandits_20231ipynb)
 4.  [Setup and Dependencies](#setup-and-dependencies)
 5.  [How to Run](#how-to-run)
 6.  [Key Parameters and Visualizations](#key-parameters-and-visualizations)
@@ -51,8 +50,9 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 *   **Policy**: Random policy (dispatch to server 1 or 2 with probability 0.5).
 *   **Method**: Iterative Policy Evaluation to calculate the value function $V(Q_1, Q_2)$.
 *   **Bellman Equation**:
-    $V_{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V_{\pi}(s')]$
-    (The notebook implements a version where reward is accrued based on current state, $R(s) = -(Q_1+Q_2)$).
+    $$V_{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V_{\pi}(s')]$$
+    (The notebook implements a version where reward is accrued based on current state,
+    $$R(s) = -(Q_1+Q_2)$$).
 *   **Output**: Heatmap of the calculated value function.
 
 #### 1.2. Optimal Control
@@ -98,7 +98,7 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 
 ## Supplementary Exercises
 
-### tp1: Dynamic Programming and Value Iteration
+### practical_session: Dynamic Programming and Value Iteration
 
 #### tp1.py: Airline Ticket Pricing
 *   **Problem**: Determine the optimal pricing strategy (action 1 or 2 with different success probabilities and revenues) for selling airline tickets over time.
@@ -111,42 +111,6 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 *   **`tp2.py`**: Implements Value Iteration to find the optimal value function and policy for different discount factors (`gamma`).
     *   **Outputs**: Plots of $V(0)$, $V(1)$, optimal action for state 0, and optimal action for state 1 as a function of `gamma`.
 *   **`tp2_policy.py` & `tp2_test.py`**: Appear to be alternative implementations or explorations, possibly involving policy iteration or direct matrix solutions for the Bellman equations.
-
-### tp2: Multi-Armed Bandits (TP2_bandits_2023(1).ipynb)
-
-This Jupyter Notebook explores various algorithms for the multi-armed bandit problem with Bernoulli rewards (0 or 1).
-
-*   **Environment**: `BernoulliBanditEnv` class.
-*   **Agent**: `Agent` class that can use different learning and decision rules.
-*   **Algorithms Compared**:
-    1.  **Epsilon-Greedy**: Explores with probability $\epsilon$, exploits otherwise.
-        *   Learning rule: Averaging.
-        *   Parameter study: Effect of different `epsilon` values.
-    2.  **Upper Confidence Bound (UCB)**:
-        $A_t = \text{argmax}_a [Q_t(a) + c \sqrt{\frac{\ln t}{N_t(a)}}]$
-        *   Learning rule: Averaging.
-        *   Parameter study: Effect of different `c` (UCB\_param) values.
-    3.  **Bayesian Beta Prior (Thompson Sampling)**:
-        *   Maintains Beta distributions for arm reward probabilities. Samples from these posteriors to select an arm.
-        *   Learning rule: `BayesianBetaPrior` (updates alpha and beta parameters of Beta distribution).
-        *   Decision rule: Greedy (effectively sampling).
-    4.  **Optimistic Initialization**:
-        *   Uses a greedy decision rule with initial Q-values set high to encourage exploration.
-        *   Parameter study: Effect of different initial Q-values (`q_init`).
-    5.  **Gradient Bandit Algorithm**:
-        *   Learns action preferences $H_t(a)$.
-        *   Action probabilities via softmax: $\pi_t(a) = \frac{e^{H_t(a)}}{\sum_b e^{H_t(b)}}$
-        *   Update rule:
-    
-            $$H_{t+1}(A_t) = H_t(A_t) + \alpha (R_t - \bar{R}_t)(1 - \pi_t(A_t))$$
-            
-            $$H_{t+1}(a) = H_t(a) - \alpha (R_t - \bar{R}_t)\pi_t(a)$$ for $a \neq A_t$
-            
-        *   Compares with and without baseline ($\bar{R}_t$).
-        *   Parameter study: Effect of different `alpha` values.
-*   **Simulations**: Function `simulateBandits` runs experiments.
-*   **Metrics**: Mean reward, mean cumulative reward, percentage of times the best arm was chosen.
-*   **Outputs**: Plots comparing algorithms based on the above metrics.
 
 ## Setup and Dependencies
 
@@ -174,9 +138,9 @@ jupyter notebook
 
 - Open the desired .ipynb file and run the cells sequentially.
 
-2. Python Scripts (.py files in tp1/):
+2. Python Scripts (.py files in practical_session/):
 
-Navigate to the tp1/ directory.
+Navigate to the practical_session/ directory.
 Run the scripts from the command line:
 
 ```bash
@@ -190,7 +154,7 @@ python tp2.py
 *   **Load Balancing Project**:
     *   Parameters: $\lambda, \mu_1, \mu_2, \gamma$, stopping criterion $\delta$ (for iterative methods), learning rate $\alpha_n$, exploration rate $\epsilon$ (for Q-learning).
     *   Visualizations: Heatmaps of value functions, optimal policies, quiver plots of actions.
-*   **tp1 Exercises**:
+*   **practical_session Exercises**:
     *   Parameters: `gamma` (discount factor).
     *   Visualizations: Heatmap of optimal actions (ticket pricing), plots of value functions and actions vs. `gamma` (2-state MDP).
 *   **Multi-Armed Bandits**:

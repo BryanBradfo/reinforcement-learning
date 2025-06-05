@@ -1,5 +1,7 @@
 # Reinforcement Learning (RL): Load Balancing, MDPs, and Multi-Armed Bandits
 
+![Reinforcement learning wallpaper](rf.gif)
+
 This repository contains implementations and explorations of various Reinforcement Learning (RL) concepts, focusing on a load balancing problem modeled as a Markov Decision Process (MDP), along with supplementary exercises on dynamic programming and multi-armed bandits.
 
 ## Table of Contents
@@ -92,7 +94,7 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 *   **Learning Rate ($\alpha_n$)**: Explores $\alpha_n = 1/n_{sa}$ (visit count for state-action pair), constant $\alpha=1$, and $\alpha_n = 1/n_{sa}^{1.5}$.
 *   **Outputs**:
     *   Heatmaps for $Q(s, a_1)$ and $Q(s, a_2)$.
-    *   Heatmap for $\max_a Q(s,a)$ (which is $V^*(s)$).
+    *   Heatmap for $\max_a Q(s,a)$ (which is $$V^*(s)$$).
     *   Quiver plot showing the optimal action derived from $Q^*$ for each state.
 *   **Observations**: Similar to TD(0), the choice of learning rate schedule impacts performance. Q-learning directly learns the optimal action-value function without a model of the environment.
 

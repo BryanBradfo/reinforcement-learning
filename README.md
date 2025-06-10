@@ -129,7 +129,7 @@ pip install numpy matplotlib jupyterlab
 ## How to Run
 
 1. Jupyter Notebooks (.ipynb files):
-- Navigate to the directory containing the notebook (project/ or tp2/).
+- Navigate to the directory containing the notebook (project/).
 - Launch Jupyter Lab or Jupyter Notebook:
 
 ```bash

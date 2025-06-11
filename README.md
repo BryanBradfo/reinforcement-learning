@@ -50,18 +50,18 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 
 #### 1.1. Policy Evaluation
 *   **Policy**: Random policy (dispatch to server 1 or 2 with probability 0.5).
-*   **Method**: Iterative Policy Evaluation to calculate the value function $V(Q_1, Q_2)$.
+*   **Method**: Iterative Policy Evaluation to calculate the value function $V\left(Q_1, Q_2\right)$.
 *   **Bellman Equation**:
-    $$V_{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V_{\pi}(s')]$$
+   $$V_{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s'} P(s'|s,a) \left[ R(s,a,s') + \gamma V_{\pi}(s') \right]$$
     (The notebook implements a version where reward is accrued based on current state,
     $$R(s) = -(Q_1+Q_2)$$).
 *   **Output**: Heatmap of the calculated value function.
 
 #### 1.2. Optimal Control
-*   **Goal**: Find the optimal policy $\pi^*$.
+*   **Goal**: Find the optimal policy $\pi*$.
 *   **Method**: Value Iteration Algorithm.
 *   **Bellman Optimality Equation**:
-    $V^*(s) = \max_{a} \sum_{s'} P(s'|s,a) [R(s,a,s') + \gamma V^*(s')]$
+$$V*(s) = \max_{a} \sum_{s'} P(s'|s,a) \left[R(s,a,s') + \gamma V*(s') \right]  $$
 *   **Outputs**:
     *   Heatmap of the optimal value function $V^*$.
     *   Heatmap showing the optimal action for each state $(Q_1, Q_2)$.

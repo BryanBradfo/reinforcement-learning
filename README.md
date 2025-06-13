@@ -63,7 +63,7 @@ This Jupyter Notebook investigates a load balancing scenario with two servers.
 *   **Bellman Optimality Equation**:
 $$V*(s) = \max_{a} \sum_{s'} P(s'|s,a) \left[R(s,a,s') + \gamma V*(s') \right]  $$
 *   **Outputs**:
-    *   Heatmap of the optimal value function $V^*$.
+    *   Heatmap of the optimal value function $V*$.
     *   Heatmap showing the optimal action for each state $(Q_1, Q_2)$.
     *   Quiver plot overlaying optimal actions on the optimal value function heatmap.
 *   **Comparison**: The optimal policy's expected value is shown to be better than the random policy's. $\mathbb{E}[V_{\text{optimal}}] > \mathbb{E}[V_{\text{random}}]$.
@@ -87,15 +87,15 @@ $$V*(s) = \max_{a} \sum_{s'} P(s'|s,a) \left[R(s,a,s') + \gamma V*(s') \right]  
 *   **Observations**: The choice of $\alpha_n$ affects convergence and final value estimates. Constant alpha can lead to instability or slow convergence if too large/small. $1/n$ satisfies Robbins-Monro conditions but can be slow. $1/\sqrt[m]{n}$ variations are explored for potentially better empirical performance.
 
 #### 2.2. Optimal Control (Q-Learning)
-*   **Goal**: Find the optimal Q-function $Q^*(s,a)$.
+*   **Goal**: Find the optimal Q-function $Q*(s,a)$.
 *   **Method**: Q-Learning algorithm.
     $Q(S_t, A_t) \leftarrow Q(S_t, A_t) + \alpha [R_{t+1} + \gamma \max_{a'} Q(S_{t+1}, a') - Q(S_t, A_t)]$
 *   **Exploration**: Epsilon-greedy strategy ($\epsilon = 0.1$).
 *   **Learning Rate ($\alpha_n$)**: Explores $\alpha_n = 1/n_{sa}$ (visit count for state-action pair), constant $\alpha=1$, and $\alpha_n = 1/n_{sa}^{1.5}$.
 *   **Outputs**:
     *   Heatmaps for $Q(s, a_1)$ and $Q(s, a_2)$.
-    *   Heatmap for $\max_a Q(s,a)$ (which is $$V^*(s)$$).
-    *   Quiver plot showing the optimal action derived from $Q^*$ for each state.
+    *   Heatmap for $\max_a Q(s,a)$ (which is $$V*(s)$$).
+    *   Quiver plot showing the optimal action derived from $Q*$ for each state.
 *   **Observations**: Similar to TD(0), the choice of learning rate schedule impacts performance. Q-learning directly learns the optimal action-value function without a model of the environment.
 
 ## Supplementary Exercises
@@ -149,7 +149,6 @@ Run the scripts from the command line:
 python tp1.py
 python tp2.py
 ```
-
 
 ## Key Parameters and Visualizations
 
